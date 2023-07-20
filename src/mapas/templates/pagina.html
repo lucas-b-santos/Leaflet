@@ -14,36 +14,55 @@
 	<link rel="shortcut icon" type="image/x-icon"
 		href="https://leafletjs.com/examples/custom-icons/docs/images/favicon.ico">
 
-	<link rel="stylesheet" href="{% static 'css/unpkg.com_leaflet@1.9.4_dist_leaflet.css' %}"
+	<link rel="stylesheet" href="{% static 'css/leaflet.css' %}"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-	<script src="{% static 'js/unpkg.com_leaflet@1.9.4_dist_leaflet.js' %}"
-		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="{% static 'js/leaflet.js' %}" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+		crossorigin=""></script>
 
 	<style>
+		/* Preciso definir a altura da DIV onde o mapa será gerado */
 		#map {
 			height: 500px;
-
-		}
+		} 
+	
 	</style>
 
 </head>
 
 <body>
 
+	<!-- DIV onde será gerado o mapa -->
 	<div id="map">
 
 	</div>
 
 
 	<script>
+		// Gera o mapa na respectiva DIV, passando seu ID para map; setView eu coloco as cordenadas iniciais como lista e o zoom inicial 
 		var map = L.map('map').setView([51.505, -0.09], 13);
 
+		//Mapa que irei usar como fonte
 		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 19,
+			maxZoom: 19, //Zoom máximo
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		}).addTo(map);
 
+		// Adiciona um marcador no mapa na coordenada passada
 		var marker = L.marker([51.5, -0.09]).addTo(map);
+
+		// adiciona um círculo na coordenada passada
+		var circle = L.circle([51.508, -0.11], {
+			color: 'blue',//cor da borda
+			fillColor: '#f03',//cor interior
+			fillOpacity: 0.5,//opacidade do interior
+			radius: 500
+		}).addTo(map);
+
+		var polygon = L.polygon([
+			[51.509, -0.08],
+			[51.503, -0.06],
+			[51.51, -0.047]
+		]).addTo(map);
 
 
 	</script>
