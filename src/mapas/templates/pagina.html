@@ -23,8 +23,7 @@
 		/* Preciso definir a altura da DIV onde o mapa será gerado */
 		#map {
 			height: 500px;
-		} 
-	
+		}
 	</style>
 
 </head>
@@ -47,7 +46,7 @@
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		}).addTo(map);
 
-		// Adiciona um marcador no mapa na coordenada passada
+		// Adiciona um marcador no mapa na coordenada passada 
 		var marker = L.marker([51.5, -0.09]).addTo(map);
 
 		// adiciona um círculo na coordenada passada
@@ -55,14 +54,26 @@
 			color: 'blue',//cor da borda
 			fillColor: '#f03',//cor interior
 			fillOpacity: 0.5,//opacidade do interior
-			radius: 500
+			radius: 500//raio 
 		}).addTo(map);
 
+		// adiciona um polígono na coordenada passada
 		var polygon = L.polygon([
 			[51.509, -0.08],
 			[51.503, -0.06],
-			[51.51, -0.047]
+			[51.51, -0.047],
 		]).addTo(map);
+
+		//adicionando mensagens aos objetos; openPopup só funciona com marcadores (abre o popup quando a página é carregada) 
+		marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+		circle.bindPopup("I am a circle.");
+		polygon.bindPopup("I am a polygon.");
+
+		//Popup no local selecionado
+		var popup = L.popup()
+			.setLatLng([51.513, -0.09])
+			.setContent("I am a standalone popup.")
+			.openOn(map);
 
 
 	</script>

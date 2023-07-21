@@ -1,0 +1,93 @@
+criar projeto no github
+
+no cmd, escolher pasta e rodar
+git clone https://github.com/losaum/testesDjango.git
+
+git add index.php
+git add --all
+
+git commit -m 'First Commit'
+
+git push 
+
+git push -u origin master
+
+git pull origin master
+
+==Ambiente============================================================
+
+python -m venv venv
+venv\Scripts\activate
+
+env/Scripts/activate.bat           //In CMD
+env/Scripts/Activate.ps1           //In Powershel
+
+## pip freeze > requirements.txt
+
+pip install -r requirements.txt
+
+====Bibliotecas========================================================
+pip install --upgrade pip
+
+pip install pipwin
+pipwin install gdal
+
+pip install django
+pip install django-session-timeout
+pip install python-dotenv
+pip install django-requestlogs
+pip install django-widget-tweaks
+pip install django-leaflet
+
+===============Instalando GDAL via arquivo WHEEL====================
+*NÃO ESQUECER DE ATIVAR O AMBIENTE PRIMEIRO*
+
+Baixar respectiva versão para o Python: https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal
+
+pip install caminho-para-o-arquivo.whl
+
+No arquivo settings.py adicionar as constantes:
+
+GEOS_LIBRARY_PATH = 'C:\\*CAMINHO ATÉ A PASTA DO AMBIENTE*\\venv\\Lib\\site-packages\\osgeo\\geos_c.dll'
+GDAL_LIBRARY_PATH = 'C:\\*CAMINHO ATÉ A PASTA DO AMBIENTE*\\venv\\Lib\\site-packages\\osgeo\\gdal304.dll'
+
+=Django============================================
+django-admin startproject core .
+python manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+
+
+python manage.py startapp base
+
+python manage.py startapp mapeamentos
+
+
+=Carregar Dados Iniciais no Banco ===============================================
+python manage.py loaddata .\mapeamentos\fixtures\mesorregiao.json
+
+https://docs.djangoproject.com/pt-br/4.2/howto/initial-data/
+
+
+=SqliteBrowser==============================================
+https://sqlitebrowser.org/dl/
+
+
+==================
+https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html
+
+
+videos legais:
+https://www.youtube.com/watch?v=tr3RkGkbEU4&ab_channel=leticialima  
+https://github.com/djangomy/config-default
+
+Modificando User para login com email e senha
+https://www.youtube.com/watch?v=8Hg9ALsxz4c&ab_channel=RegisdoPython
+https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html
+https://github.com/rg3915/django-boilerplate/blob/main/core/models.py
+
+
+
+https://github.com/rg3915/dicas-de-django/tree/main/backend/accounts
