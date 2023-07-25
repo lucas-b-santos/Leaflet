@@ -46,7 +46,7 @@ Baixar respectiva versão para o Python: https://www.lfd.uci.edu/~gohlke/pythonl
 
 pip install caminho-para-o-arquivo.whl
 
-No arquivo settings.py adicionar as constantes (pasta do ambiente precisa estar dentro da raíz do projeto):
+No arquivo settings.py adicionar as constantes (pasta do ambiente precisa estar dentro da raíz do projeto, nome do ambiente "venv"):
 
 GEOS_LIBRARY_PATH = os.path.join(BASE_DIR, "venv","Lib","site-packages","osgeo", "geos_c.dll")  
 GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, "venv","Lib","site-packages","osgeo", "gdal304.dll")  
