@@ -34,6 +34,17 @@
 			var map = event.detail.map;
 		});
 
+		function generateColor() {
+			const letters = '0123456789ABCDEF';
+			let color = '#';
+
+			for (let i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+
+			return color;
+		}
+
 		function map_init(map, options) {
 			//Configurações do mapa
 
@@ -74,7 +85,8 @@
 					const parser = new DOMParser();
 					const kml = parser.parseFromString(kmltext, 'text/xml');
 					const track = new L.KML(kml);
-					map.addLayer(track);
+					track.bindPopup('Hello world!').setStyle({ fillColor: 'red', fillOpacity: 0.5 }).addTo(map);
+
 
 					// Foca o mapa no polígono
 					// const bounds = track.getBounds();
@@ -88,7 +100,7 @@
 					const parser = new DOMParser();
 					const kml = parser.parseFromString(kmltext, 'text/xml');
 					const track = new L.KML(kml);
-					map.addLayer(track);
+					track.bindPopup('Hello world!').setStyle({ fillColor: 'blue', fillOpacity: 0.5 }).addTo(map);
 				});
 
 			fetch("{% static 'assets/mesorregioes/NM_MESO_Metropolitana de Curitiba.kml' %}")
@@ -98,12 +110,14 @@
 					const parser = new DOMParser();
 					const kml = parser.parseFromString(kmltext, 'text/xml');
 					const track = new L.KML(kml);
-					map.addLayer(track);
+					track.on('click', () => {
+						track.setStyle({ fillColor: generateColor(), fillOpacity: 0.5 });
+					}).setStyle({ fillColor: 'green', fillOpacity: 0.5 }).addTo(map);
 				});
 
 			var layerControl = L.control.layers(baseMaps).addTo(map);
 
-			
+
 		}
 
 	</script>
