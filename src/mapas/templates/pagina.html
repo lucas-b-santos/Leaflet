@@ -26,8 +26,9 @@
 	<div>
 		{% leaflet_map "main" callback="map_init" %}
 	</div>
-
-	<script src="{% static 'L.KML.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="{% static 'L.Geoserver.js' %}"></script>
+	<script src=" {% static 'L.KML.js' %}"></script>
 
 	<script type="text/javascript">
 		window.addEventListener("map:init", function (event) {
@@ -114,6 +115,16 @@
 						track.setStyle({ fillColor: generateColor(), fillOpacity: 0.5 });
 					}).setStyle({ fillColor: 'green', fillOpacity: 0.5 }).addTo(map);
 				});
+
+			var layerGeo = L.tileLayer.wms('http://localhost:8080/geoserver/wms?', {
+				request: 'GetMap',
+				service: 'WMS',
+				version: '2.23.2',
+				layers: 'teste:Raster_MapeamentoSojaParana_20192020',
+				format: 'image/png',
+
+			});
+			layerGeo.addTo(map);
 
 			var layerControl = L.control.layers(baseMaps).addTo(map);
 
